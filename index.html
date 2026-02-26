@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <title>강민호 자기소개 페이지</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<script>
+  function copyText(text, textSpan) {
+    var originalText = textSpan.innerText;
+    var originalColor = textSpan.style.color;
+    var originalWeight = textSpan.style.fontWeight;
+
+    function success() {
+      textSpan.innerText = "복사완료!";
+      textSpan.style.color = "#22c55e";
+      textSpan.style.fontWeight = "bold";
+      setTimeout(function () {
+        textSpan.innerText = originalText;
+        textSpan.style.color = originalColor;
+        textSpan.style.fontWeight = originalWeight;
+      }, 2000);
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(success).catch(err => {
+        fallbackCopy(text, success);
+      });
+    } else {
+      fallbackCopy(text, success);
+    }
+
+    function fallbackCopy(text, cb) {
+      var textArea = document.createElement("textarea");
+      textArea.value = text;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      cb();
+    }
+  }
+</script>
+
+<body>
+  <header class="hero">
+    <img
+      src="https://i.namu.wiki/i/7gFiOE8l8aznKc3dDwpS1kF1FCBp_eAfGt8xc_CCkRiod_SpDvUdDHXZKltESAjPvLQkSKA-ECTn3zqCSGIZ5g.webp"
+      alt="프로필 사진" class="profile">
+    <h1 class="typing">안녕하세요!!</h1>
+    <p class="special"><strong>BFD 부부장</strong><span> 강민호</span> 입니다!</p>
+  </header>
+
+  <section class="card">
+    <h2>🙋‍♂️ About Me</h2>
+    <p>
+      서울시 노원구 상명중학교 졸업 👨‍🎓<br>
+      서울시 용산구 선린인터넷고등학교 재학중 🏫<br>
+      생년월일: 2009.05.12 🎂
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>🏆 Awards</h2>
+    <ul class="list">
+      <li><strong>📘 1학기</strong></li>
+      <li>🥈 2025 기업연구보고서대회 <span class="silver">은상</span></li>
+      <li>🏅 상업 경제 <span class="gold">교과우수상</span></li>
+      <br>
+      <li><strong>📗 2학기</strong></li>
+      <li>🏅 기업과 경영 <span class="gold">교과우수상</span></li>
+      <li>🏅 프로그래밍(PYTHON) <span class="gold">교과우수상</span></li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>📞 Contact</h2>
+    <div class="contact-item">
+      <span onclick="copyText('graunding2024@gmail.com', this)">Email : graunding2024@gmail.com</span>
+    </div>
+    <div class="contact-item">
+      <span onclick="copyText('010-4026-6935', this)">Tel : 010-4026-6935</span>
+    </div>
+    <div class="contact-item">
+      <span onclick="copyText('@mh_171g', this)">Insta : @mh_171g</span>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 BFD All rights reserved
+  </footer>
+</body>
+
+</html>
